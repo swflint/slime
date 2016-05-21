@@ -80,6 +80,9 @@ contributors.texi: $(CHANGELOGS) Makefile texinfo-tabulate.awk
 
 #.INTERMEDIATE: contributors.texi
 
+dir: slime.info
+	install-info --info-dir=. slime.info
+
 # Debian's install-info wants a --section argument.
 install-info: section=$(shell grep INFO-DIR-SECTION $(infofiles) | sed 's/INFO-DIR-SECTION //')
 install-info: slime.info
@@ -110,3 +113,4 @@ clean:
 	rm -f slime.vr slime.vrs
 	rm -f slime.info slime.pdf slime.dvi slime.ps slime.html
 	rm -rf html html.tgz
+	rm -f dir
